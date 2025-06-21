@@ -1,62 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Sunjeda Shabbir Moon</title>
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: lightyellow;
+      color: #111827;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: blue;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #1d4ed8;
+      outline: none;
+    }
+    /* Container */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    /* Header */
+    header {
+      background-color: skyblue;
+      color: blue;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 4px;
+      border-radius: 6px;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: yellow;
+    }
+    /* Hero section with image and text side by side */
+    .about {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      padding: 48px 0;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1 1 320px;
+      max-width: 540px;
+    }
+    .about-text h1 {
+      font-size: 3rem;
+      margin-bottom: 24px;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.1;
+    }
+    .about-text p {
+      font-size: 1.2rem;
+      color: black;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+    .about-image {
+      flex: 1 1 320px;
+      max-width: 480px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+      transition: transform 0.3s ease;
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .about-image:hover,
+    .about-image:focus-within {
+      transform: scale(1.05);
+      outline: none;
+    }
+    /* Section headings */
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #111827;
+    }
+    /* Section paragraphs */
+    p {
+      font-size: 1.1rem;
+      color: black;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+    /* Education and skills */
+    .education,
+    .eca,
+    .jobs,
+    .languages,
+    .skills {
+      margin-bottom: 64px;
+    }
+    ul.education-list,
+    ul.eca-list,
+    ul.jobs-list,
+    ul.languages-list {
+      list-style: none;
+      padding-left: 0;
+      max-width: 700px;
+    }
+    ul.education-list li,
+    ul.eca-list li,
+    ul.jobs-list li,
+    ul.languages-list li {
+      margin-bottom: 20px;
+      color: black;
+    }
+    /* Skills list */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 700px;
+    }
+    .skill-pill {
+      color: black;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 1rem;
+      user-select: none;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+      transition: background-color 0.3s ease;
+    }
+    .skill-pill:hover,
+    .skill-pill:focus {
+      background-color: yellow;
+      outline: none;
+      cursor: default;
+    }
+    /* Contact info */
+    address {
+      font-style: normal;
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+    address a {
+      color: blue;
+      font-weight: 600;
+    }
+    /* Footer */
+    footer {
+      background-color: skyblue;
+      padding: 32px 0;
+      font-size: 0.9rem;
+    }
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    footer .social-links {
+      display: flex;
+      gap: 24px;
+    }
+    footer .links {
+      font-size: 20px;
+      color: blue;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    footer .links:hover,
+    footer .links:focus {
+      color: yellow;
+      outline: none;
+    }
+    /* Responsive */
+    @media (max-width: 960px) {
+      .about {
+        gap: 32px;
+      }
+    }
+    @media (max-width: 640px) {
+      nav {
+        gap: 16px;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
+      main {
+        padding: 32px 0;
+      }
+      .about {
+        flex-direction: column;
+        padding: 32px 0;
+      }
+      .about-text,
+      .about-image {
+        max-width: 100%;
+        flex: none;
+      }
+      .about-text h1 {
+        font-size: 2.25rem;
+      }
+      .about-text p {
+        font-size: 1rem;
+      }
+      .skills-list {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Curriculum Vitae</h1>
-    <big><b>Sunjeda Shabbir Moon</b></big><br>
-    <img src="1717392012616.jpg" height="200" alt ="Photo">
-        <p>Phone: 01316853415</p>
-        <p>Email: sunjedashabbirmoon25@gmail.com</p>
-        <body link="blue" vlink="green" alink="yellow" <p>Linkedin Profile: <a href="https://bd.linkedin.com/in/sunjeda-shabbir-moon-28b473285">Sunjeda Shabbir Moon</a></p></body>
-        <P>House 59, Road 18, Sector 7, Uttara, Dhaka-1230</P><br>
-    <h3>Career Objective</h3>
-        <P>As an engineering student, I aim to leverage my technical skills,  problem-solving abilities, and eagerness to learn in a dynamic internship role. I seek to contribute meaningfully to innovative projects while gaining practical experience and deepening my understanding of real-world software development and IT solutions.</P><Br>
-    <h3>Education</h3>
-        <p>B.Sc. in CSE, World University of Bangladesh, 6<sup>th</sup> Semester (Ongoing), Current CGPA: 3.10</p>
-        <p>HSC in Science, Govt. Fakirhat Fazilatunnesa Mujib Mohila Degree College, Jessore, GPA: 3.96(2022)</p>
-        <p>SSC in Science, Dakhin Banasree Model High School & College, Dhaka, GPA: 4.56(2018)</p>
-    <br>
-    <h3>Job Experience</h3>
-        <i><b>Event Assistant - Unitech Textile Limited</b></i>
-            <p>Part Time | 23rd TexTech Bangladesh International Expo 2024</p>
-            <p>-Supported booth operations assisted with International visitor engagement.</p>
-            <p>-Helped coordinate schedules and manage logistics.</p><br>
-        <i><b>Event Assistant - Bangladesh Just Transition Academy</b></i>
-            <p>Part Time | Organized By International Labour Organization<p>
-            <p>-Assisted in organizing event logistics.</p>
-            <p>-Managed registration and guest support.</p>
-        <i><b>Social Media Manager - Teachers Today Limited</b></i>
-            <p>Remote | September 2024 - October 2024</p>
-            <p>-Managed and created content for the company's social media platforms, increasing engagement and online visibility.</p>
-            <p>-Scheduled regular posta, monitored performance metrics, and responded to customer interactions.</p>
-            <p>-Collaborated with the sales and design teams to align social media strategies with marketing goals.</p>
-        <i><B>Online Sales Representative - Teachers Today Limited</B></i>
-            <p>Remote | August 2024 - September 2024</p>
-            <p>-Handled online customer queries and provided detailed information about service.</p>
-            <p>-Assisted in managing digital sales channels and maintaining accurate customer databases.</p>
-            <p>-Contributed to sales strategy and supported marketing efforts through social media outreach.<p>
-    <br>
-    <h3>Skills</h3>
-        <p>-MS Word, MS Excel, MS Powerpoint, Internet Browsing, E-mailing.</p>
-        <p>-Programming Languages: C, C++, HTML, CSS</p>
-        <P>-Event Coordination, Communication, Public Speaking, Teamwork</P>
-    <br>
-    <h3>Languages</h3>
-        <p>-Bangla: Native</p>
-        <p>-English: Full Working Proficiency</p>
-        <p>-Hindi: Full Working Proficiency</p>
-        <br>
-    <h3>Extracurricular Activites</h3>
-        <p>-Public Relations Executive - Robotics Club, World University of Bangladesh</p>
-        <p>Involved in planning, outreach, and maintaining external relations for the club.</p>
-        <p>-Cricket Player - Clemon Uni Campus Cricket Tournament 2025</p>
-        <p>Represented the team of CSE department in the cricket tournament.</p>
-        <p>-Blood Donor - WUB Blood Donors</p>
-        <p>Actively participate in voluntary blood donation drives organized by the university's senior students.</p>
-    </body>
+  <header>
+    <div class="container">
+      <div class="logo">Sunjeda Shabbir Moon</div>
+      <nav>
+        <a href="#about" tabindex="0">Home</a>
+        <a href="#education" tabindex="0">Education</a>
+        <a href="#eca" tabindex="0">ECA</a>
+        <a href="#skills" tabindex="0">Skills</a>
+        <a href="#jobs" tabindex="0">Job Experience</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section id="about" class="about">
+      <div class="about-text">
+        <h1>Hello, I am Sunjeda Shabbir Moon</h1>
+        <p>As an engineering student, I aim to leverage my technical skills,  problem-solving abilities, and eagerness to learn in a dynamic internship role. I seek to contribute meaningfully to innovative projects while gaining practical experience and deepening my understanding of real-world software development and IT solutions.</p>
+      </div>
+      <div class="about-image" tabindex="0">
+        <img src="image.jpg" alt="Sunjeda Shabbir Moon" />
+      </div>
+    </section>
+
+    <section id="education" class="education">
+      <h2>Education</h2>
+      <ul class="education-list">
+        <li>
+          <strong>B.Sc in Computer Science and Engineering</strong><br>
+          World University of Bangladesh <br>
+          6<sup>th</sup> Semester (Ongoing) <br>
+          Current CGPA: 3.10 
+        </li>
+        <li>
+          <strong>HSC in Science</strong><br>
+          GPA - 3.96
+          Passing Year - 2022
+          <br>
+          Govt. Fakirhat Fazilatunnesa Mujib Mohila Degree College, Jessore.
+        </li>
+        <li>
+          <strong>SSC in Science</strong><br>
+          GPA - 4.56
+          Passing Year - 2018
+          <br>
+          Dakhin Banasree Model High School & College, Dhaka.
+        </li>
+      </ul>
+    </section>
+
+    <section id="eca" class="eca">
+      <h2>Extracurricular Activities</h2>
+      <ul class="eca-list">
+        <li>
+           Public Relations Executive - Robotics Club, World University of Bangladesh
+        </li>
+        <li>
+          Involved in planning, outreach, and maintaining external relations for the club
+        </li>
+        <li>
+          Cricket Player - Clemon Uni Campus Cricket Tournament 2025
+        </li>
+        <li>
+          Represented the team of CSE department in the cricket tournament
+        </li>
+        <li>
+          Blood Donor - WUB Blood Donors
+        </li>
+        <li>
+          Actively participate in voluntary blood donation drives organized by the university's senior students
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span class="skill-pill" tabindex="0">HTML</span>
+        <span class="skill-pill" tabindex="0">CSS</span>
+        <span class="skill-pill" tabindex="0">C</span>
+        <span class="skill-pill" tabindex="0">C++</span>
+        <span class="skill-pill" tabindex="0">MS Word</span>
+        <span class="skill-pill" tabindex="0">MS Excel</span>
+        <span class="skill-pill" tabindex="0">MS Powepoint</span>
+        <span class="skill-pill" tabindex="0">Internet Browsing</span>
+        <span class="skill-pill" tabindex="0">Emailing</span>
+        <span class="skill-pill" tabindex="0">Event Coordination</span>
+        <span class="skill-pill" tabindex="0">Communication</span>
+        <span class="skill-pill" tabindex="0">Public Speaking</span>
+        <span class="skill-pill" tabindex="0">Teamwork</span>
+      </div>
+    </section>
+
+    <section id="languages" class="languages">
+      <h2>Languages</h2>
+      <ul class="languages-list">
+        <li>Bangla: Native</li>
+        <li>English: Full Working Proficiency</li>
+        <li>Hindi: Full Working Proficiency</li>
+      </ul>
+    </section>
+
+    <section id="jobs" class="jobs">
+      <h2>Job Experience</h2>
+      <ul class="jobs-list">
+        <li>
+          <strong>Event Assistant - Unitech Textile Limited</strong><br>
+          Part Time | 23rd TexTech Bangladesh International Expo 2024 <br>
+          Supported booth operations assisted with International visitor engagement. <br>
+          Helped coordinate schedules and managed logistics
+        </li>
+        <li>
+          <strong>Event Assistant - Bangladesh Just Transition Academy</strong><br>
+          Part Time | Organized By International Labour Organization <br>
+          Assisted in organizing event logistics. <br>
+          Managed registration and guest support.
+        </li>
+        <li>
+          <strong>Social Media Manager - Teachers Today Limited</strong> <br>
+          Remote | September 2024 - October 2024 <br>
+          Managed and created content for the company's social media platforms, increasing engagement and online visibility. <br>
+          Scheduled regular posta, monitored performance metrics, and responded to customer interactions. <br>
+          Collaborated with the sales and design teams to align social media strategies with marketing goals.
+        </li>
+        <li>
+          <strong>Online Sales Representative - Teachers Today Limited</strong><br>
+          Remote | August 2024 - September 2024 <br>
+          Handled online customer queries and provided detailed information about service. <br>
+          Assisted in managing digital sales channels and maintaining accurate customer databases. <br>
+          Contributed to sales strategy and supported marketing efforts through social media outreach. <br>
+        </li>
+      </ul>
+    </section>    
+
+  </main>
+  <footer id="contact" class="contact">
+    <div class="container">
+      <div class="social-links">
+        <address>
+        <strong class="links"><i class="fa-solid fa-envelope"></i></strong> <a class="links" href="mailto:sunjedashabbirmoon25@gmail.com">sunjedashabbirmoon25@gmail.com</a><br>
+        <strong class="links"><i class="fa-solid fa-phone"></i></strong> <a class="links" href="tel:+8801316853415">+880 1316-853415</a> <br>
+        <strong class="links"><i class="fa-brands fa-linkedin"></i></strong> <a class="links" href="https://bd.linkedin.com/in/sunjeda-shabbir-moon-28b473285">Sunjeda Shabbir Moon</a> <br>
+        <strong class="links"><i class="fa-solid fa-location-dot"></i></strong><a class="links" href="https://maps.app.goo.gl/wu4Fdhoktw7zXtxq9">House 59, Road 18, Sector 7, Uttara, Dhaka-1230</a>
+      </address>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
