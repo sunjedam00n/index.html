@@ -1,15 +1,3 @@
-body{
-    background-color: lightyellow;
-}
-*{
-    color: #000000
-}
-h3{
-    color:#60acc8;
-}
-h1{
-    color:#021184;
-}
 /* Reset and base */
     *, *::before, *::after {
       box-sizing: border-box;
